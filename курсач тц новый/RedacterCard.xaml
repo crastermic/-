@@ -1,0 +1,58 @@
+﻿<Window x:Class="курсач_тц_новый.RedacterCard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:курсач_тц_новый"
+        mc:Ignorable="d"
+        Title="RedacterCard" Height="500" Width="650" WindowStartupLocation="CenterScreen" FontSize="20" Background="#F1F6F9" >
+    <Grid>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0">
+
+            <TextBlock Text="Отдел"/>
+            <TextBox Text="{Binding SelectedCardhall.CardPavNavigation.PavName}" 
+                     TextChanged="TextBox_TextChanged" />
+
+            <TextBlock Text="Название или имя организации"/>
+            <TextBox Text="{Binding SelectedCardhall.CardPavNavigation.PavTitle}" TextChanged="TextBox_TextChanged" />
+            
+            <TextBlock Text="Владелец"/>
+            <TextBox Text="{Binding SelectedCardhall.CardPavNavigation.PavOwner}" />
+            
+            <TextBlock Text="Менеджер"/>
+            <TextBox Text="{Binding SelectedCardhall.CardPavNavigation.PavMenag}" />
+           
+        </StackPanel>
+        
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Контактный телефон"/>
+            <TextBox Text="{Binding SelectedCardhall.CardPavNavigation.PavTeleph}" />
+            
+            <TextBlock Text="Контактная почта"/>
+            <TextBox Text="{Binding SelectedCardhall.CardPavNavigation.PavMail}" />
+            
+            <TextBlock Text="Адресс компании"/>
+            <TextBox Text="{Binding SelectedCardhall.CardPavNavigation.PavAdre}" />
+            
+            <TextBlock Text="Находится в павильоне"/>
+            <ComboBox ItemsSource="{Binding TblHall}" DisplayMemberPath="HallSide"
+                      SelectedItem="{Binding SelectHall,UpdateSourceTrigger=PropertyChanged}" x:Name="pavbuthall" 
+                      SelectionChanged="pavbuthall_SelectionChanged"/>
+
+            <TextBlock Text="Тип комнаты"/>
+            <ComboBox ItemsSource="{Binding TblRoom}" DisplayMemberPath="RoomName"
+                      SelectedItem="{Binding SelectRoom,UpdateSourceTrigger=PropertyChanged}" x:Name="rooma" 
+                      SelectionChanged="rooma_SelectionChanged"/>
+            
+            <Label Content="" Height="75"/>
+
+            <Button Content="Сохранить" Click="SaveClose" Width="120" HorizontalAlignment="Center" Background="#549FC9"/>
+            
+        </StackPanel>
+    </Grid>
+</Window>

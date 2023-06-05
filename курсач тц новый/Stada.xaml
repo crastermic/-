@@ -1,0 +1,49 @@
+﻿<Window x:Class="курсач_тц_новый.Stada"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:курсач_тц_новый"
+        mc:Ignorable="d"
+        Title="Stada" Height="470" Width="750"
+        WindowStartupLocation="CenterScreen" FontSize="18">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <ListView  x:Name="Jop" ItemsSource="{Binding TblStats}" Height="350" Width="590" HorizontalAlignment="Center" 
+                    Background="AliceBlue" Grid.Row="1" 
+                    SelectedItem="{Binding SelectedStatistic}" Grid.Column="0" >
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Добавить" Click="Sadd"/>
+                    <MenuItem Header="Редактировать" Click="Srem"/>
+                    <MenuItem Header="Удалить" Click="Sdel"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+            <ListView.View>
+                <GridView >
+                    <GridViewColumn DisplayMemberBinding="{Binding StatData}"
+                                    Header="Дата" Width="100" />
+                    <GridViewColumn DisplayMemberBinding="{Binding StatProf}" 
+                                    Header="Прибыль" Width="120"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding StatLoss}" 
+                                    Header="Убытки" Width="120"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Grid.Row="0" Background="#F1F6F9" Grid.ColumnSpan="2">
+            <TextBlock  Text="{Binding SelectedPavilion.PavName}" HorizontalAlignment="Center" Margin="5"/>
+            <TextBlock  Text="{Binding SelectedPavilion.PavTitle}" HorizontalAlignment="Center" Margin="5" />
+        </StackPanel>
+    </Grid>
+
+</Window>
